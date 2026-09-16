@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Convert</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Convert</h1>
+    <nav>
+      <button class="tab active" data-tab="convert">Convert files</button>
+      <button class="tab" data-tab="merge">Merge &amp; arrange PDF</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="convert" class="panel active">
+      <label class="drop" id="convert-drop">
+        <input type="file" multiple hidden id="convert-input">
+        <strong>Drop files here</strong> or click to choose
+        <small id="formats-hint"></small>
+      </label>
+
+      <div class="bar" id="convert-bar" hidden>
+        <span>Set all to</span>
+        <select id="convert-all"></select>
+        <label id="combine-wrap" hidden><input type="checkbox" id="combine"> Combine images into one PDF</label>
+        <span class="spacer"></span>
+        <button id="convert-clear" class="ghost">Clear</button>
+        <button id="convert-go" class="primary">Convert</button>
+      </div>
+
+      <ul id="convert-list" class="files"></ul>
+      <div class="bar" id="download-bar" hidden>
+        <span class="spacer"></span>
+        <a id="download-zip" href="#">Download as .zip</a>
+        <button id="download-all" class="primary">Download all</button>
+      </div>
+    </section>
+
+    <section id="merge" class="panel">
+      <label class="drop small" id="merge-drop">
+        <input type="file" multiple hidden id="merge-input">
+        <strong>Drop PDFs, images or documents</strong> — pages appear below. Drag to reorder.
+      </label>
+
+      <div class="bar" id="merge-bar" hidden>
+        <span id="merge-count"></span>
+        <button data-act="rotate" title="Rotate selected (R)">↻ Rotate</button>
+        <button data-act="delete" title="Delete selected (Del)">✕ Delete</button>
+        <button data-act="reverse">Reverse</button>
+        <button data-act="sort">Sort by file</button>
+        <button data-act="all">Select all</button>
+        <span class="spacer"></span>
+        <button data-act="clear" class="ghost">Clear</button>
+        <button data-act="extract" id="extract-btn">Download selected</button>
+        <button data-act="merge" class="primary">Download merged PDF</button>
+      </div>
+      <p class="hint" id="merge-hint" hidden>Click to select · Shift-click for a range · ⌘-click to add · Drag to move (moves all selected)</p>
+
+      <div id="pages" class="pages"></div>
+    </section>
+  </main>
+
+  <script src="/vendor/pdf-lib/pdf-lib.min.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
