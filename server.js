@@ -141,7 +141,7 @@ setInterval(() => {
 }, 60 * 1000).unref();
 
 checkTools().then(() => {
-  app.listen(PORT, '127.0.0.1', () => {
+  app.listen(PORT, '0.0.0.1', () => {
     console.log(`Converter running at http://localhost:${PORT}`);
     const missing = Object.entries(health).filter(([, ok]) => !ok).map(([t]) => t);
     if (missing.length) console.log(`Missing tools (some formats disabled): ${missing.join(', ')}`);
